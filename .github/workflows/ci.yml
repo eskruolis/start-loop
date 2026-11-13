@@ -1,0 +1,41 @@
+name: ci
+
+# Runs once per pull request (and on main after a merge). The same checks run on your machine
+# first (lefthook + /ship), so this should rarely fail.
+on:
+  pull_request:
+    paths-ignore: ["**/*.md", "docs/**", ".claude/**"]
+  push:
+    branches: [main]
+    paths-ignore: ["**/*.md", "docs/**", ".claude/**"]
+
+concurrency:
+  group: ci-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BETTER_AUTH_SECRET: ci-secret-only-for-tests-not-real-0000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright
+          path: /tmp/start-loop-e2e
+          retention-days: 7

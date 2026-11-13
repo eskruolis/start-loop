@@ -1,0 +1,10 @@
+# One app for now. This file also makes this folder its own pnpm root,
+# so it never joins a parent workspace by accident.
+packages:
+  - "."
+onlyBuiltDependencies:
+  - "@biomejs/biome"
+  - esbuild
+  - lefthook
+  - sharp
+  - unrs-resolver
