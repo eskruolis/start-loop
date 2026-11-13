@@ -8,6 +8,8 @@ invoices, whatever the business runs on today in spreadsheets.
 - **Built like a professional app:** sign-in with roles, validation on screen and on the server, money handled in cents, tests that click through the app on a phone and a desktop, light and dark themes.
 - **Made to be extended with Claude Code:** the rules, patterns and lessons from three production projects are written in `AGENTS.md` and `docs/`, and Claude has ready-made skills for the common jobs.
 
+![The dashboard with demo data](docs/screenshot-dashboard.png)
+
 Stack: Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · shadcn/ui · Drizzle + Postgres ·
 Google Sheets API · Better Auth · Vitest · Playwright. Why each: `docs/DECISIONS.md`.
 
