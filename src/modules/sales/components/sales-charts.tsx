@@ -16,7 +16,9 @@ import type { SalesStats } from "../stats"
 
 /**
  * The charts that replace the Google Sheets pie and column charts. Colours come from the theme's
- * --chart-1…5 tokens, so they follow light and dark mode.
+ * --chart-1…5 tokens, so they follow light and dark mode. No entry animation: a dashboard opened
+ * many times a day should show its numbers at once (and an animated SVG pie was sometimes left
+ * unpainted in embedded browsers).
  */
 const money = (v: unknown) => (typeof v === "number" ? formatMoney(v) : String(v))
 const compact = (cents: number) =>
@@ -53,7 +55,12 @@ export function RevenueByMonthChart({ data }: { data: SalesStats["byMonth"] }) {
                 />
               }
             />
-            <Bar dataKey="amountCents" fill="var(--color-amountCents)" radius={4} />
+            <Bar
+              dataKey="amountCents"
+              fill="var(--color-amountCents)"
+              radius={4}
+              isAnimationActive={false}
+            />
           </BarChart>
         </ChartContainer>
       </CardContent>
@@ -84,6 +91,7 @@ export function RevenueByCategoryChart({ data }: { data: SalesStats["byCategory"
                 data={data}
                 dataKey="amountCents"
                 nameKey="category"
+                isAnimationActive={false}
                 innerRadius={55}
                 strokeWidth={2}
               >
