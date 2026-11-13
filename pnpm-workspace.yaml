@@ -3,6 +3,12 @@
 packages:
   - "."
 onlyBuiltDependencies:
+  # The local Postgres binaries (one package per platform) fix up their files after install.
+  - "@embedded-postgres/darwin-arm64"
+  - "@embedded-postgres/darwin-x64"
+  - "@embedded-postgres/linux-arm64"
+  - "@embedded-postgres/linux-x64"
+  - "@embedded-postgres/windows-x64"
   - "@biomejs/biome"
   - esbuild
   - lefthook
