@@ -3,8 +3,8 @@ name: ci
 # Runs once per pull request (and on main after a merge). The same checks run on your machine
 # first (lefthook + /ship), so this should rarely fail.
 on:
+  # Every PR runs it: `ci` is a required check on main, so a skipped run would block the merge.
   pull_request:
-    paths-ignore: ["**/*.md", "docs/**", ".claude/**"]
   push:
     branches: [main]
     paths-ignore: ["**/*.md", "docs/**", ".claude/**"]
