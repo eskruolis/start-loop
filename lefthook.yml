@@ -13,3 +13,7 @@ pre-push:
       run: pnpm typecheck
     test:
       run: pnpm test
+commit-msg:
+  commands:
+    conventional:
+      run: pnpm exec tsx scripts/check-commit-msg.ts {1}

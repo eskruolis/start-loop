@@ -1,0 +1,23 @@
+name: pr-title
+
+# A squash merge turns the PR title into the commit on main that /release reads, so the title
+# follows the same rules as every commit (scripts/lib/commit-message.ts).
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  pr-title:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec tsx scripts/check-commit-msg.ts --text "$TITLE"
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
