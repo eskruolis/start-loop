@@ -29,9 +29,7 @@ Read next, when relevant: `docs/LESSONS.md` (mistakes that already happened — 
 ## 2. Commands
 
 ```bash
-nvm use                 # Node 22
-pnpm install
-cp .env.example .env.local   # then set BETTER_AUTH_SECRET (openssl rand -base64 32)
+./setup.sh              # once per machine: Node 22, pnpm, packages, hooks, .env.local, test browser, DB, checks (/setup)
 pnpm dev                # local Postgres + migrations + app on http://localhost:3000
 pnpm db:seed            # demo sales so the dashboard has data
 pnpm check              # typecheck + lint + unit tests (run before every commit)
@@ -120,12 +118,12 @@ docs/                     the documentation above; docs/plans/ is local scratch 
 - A new data adapter passes `src/server/data/__tests__/repository-contract.test.ts`.
 - Every user-facing feature gets a Playwright test in `e2e/` that does what a person does (click, type, read the screen), and runs on the desktop and phone projects.
 - After a UI change, look at it in the browser (`/verify-ui`): phone and desktop, light and dark, empty and full, with a long value. Tests passing is not the same as the screen being right.
-- `pnpm check` before every commit (the git hook runs it), `pnpm build` and `pnpm test:e2e` before every PR.
+- `pnpm check` before every commit (the git hooks format on commit and run typecheck + tests on push), `pnpm build` and `pnpm test:e2e` before every PR.
 
 ## 8. Git, pull requests and releases (full guide: docs/GIT-WORKFLOW.md)
 
 - `main` is production. Work happens on a branch (`feat/invoices`, `fix/sales-total`), merged by pull request after its checks pass. Never push to `main` directly.
-- Commits follow Conventional Commits (`feat(sales): add export`, `fix(sheets): read dates in dd/mm/yyyy`), English, subject ≤ 72 characters. The type decides the version bump.
+- Commits follow Conventional Commits: `type(scope): what changed` (`feat(sales): add export`, `fix(sheets): read dates in dd/mm/yyyy`), English, a lowercase command, ≤ 72 characters, no full stop; a body only for the why; `!` / `BREAKING CHANGE:` for breaking changes. One logical change per commit. The `commit-msg` hook and the PR-title check enforce it (`scripts/lib/commit-message.ts`); never `--no-verify`. The type decides the version bump. Full rules and examples: docs/GIT-WORKFLOW.md#commits.
 - Open PRs with `/ship` (checks, self-review, fixes, summary). Releases with `/release` (changelog, version tag). Before pushing more commits to a PR, check it is still open (`gh pr view --json state`).
 - Never commit `.env*` files, secrets, customer data, or `docs/plans/`.
 

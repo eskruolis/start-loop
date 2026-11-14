@@ -30,5 +30,16 @@
       "Read(./.env.local)",
       "Read(./.env.*.local)"
     ]
+  },
+  "extraKnownMarketplaces": {
+    "claude-reflect-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "bayramannakov/claude-reflect"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "reflect-mod@claude-reflect-marketplace": true
   }
 }
