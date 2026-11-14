@@ -16,4 +16,4 @@ pre-push:
 commit-msg:
   commands:
     conventional:
-      run: pnpm exec tsx scripts/check-commit-msg.ts {1}
+      run: pnpm exec commitlint --edit {1}

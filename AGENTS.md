@@ -123,7 +123,7 @@ docs/                     the documentation above; docs/plans/ is local scratch 
 ## 8. Git, pull requests and releases (full guide: docs/GIT-WORKFLOW.md)
 
 - `main` is production. Work happens on a branch (`feat/invoices`, `fix/sales-total`), merged by pull request after its checks pass. Never push to `main` directly.
-- Commits follow Conventional Commits: `type(scope): what changed` (`feat(sales): add export`, `fix(sheets): read dates in dd/mm/yyyy`), English, a lowercase command, ≤ 72 characters, no full stop; a body only for the why; `!` / `BREAKING CHANGE:` for breaking changes. One logical change per commit. The `commit-msg` hook and the PR-title check enforce it (`scripts/lib/commit-message.ts`); never `--no-verify`. The type decides the version bump. Full rules and examples: docs/GIT-WORKFLOW.md#commits.
+- Commits and PR titles follow [Conventional Commits](https://www.conventionalcommits.org) (`feat(sales): add export`, `fix(sheets): read dd/mm/yyyy dates`), in English; commitlint checks them. The type decides the version bump.
 - Open PRs with `/ship` (checks, self-review, fixes, summary). Releases with `/release` (changelog, version tag). Before pushing more commits to a PR, check it is still open (`gh pr view --json state`).
 - Never commit `.env*` files, secrets, customer data, or `docs/plans/`.
 

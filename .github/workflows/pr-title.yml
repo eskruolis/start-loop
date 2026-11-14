@@ -1,7 +1,7 @@
 name: pr-title
 
 # A squash merge turns the PR title into the commit on main that /release reads, so the title
-# follows the same rules as every commit (scripts/lib/commit-message.ts).
+# follows Conventional Commits too (commitlint.config.ts).
 on:
   pull_request:
     types: [opened, edited, synchronize, reopened]
@@ -18,6 +18,6 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec tsx scripts/check-commit-msg.ts --text "$TITLE"
+      - run: echo "$TITLE" | pnpm exec commitlint
         env:
           TITLE: ${{ github.event.pull_request.title }}
