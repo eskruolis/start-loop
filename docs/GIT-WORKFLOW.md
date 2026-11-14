@@ -42,4 +42,5 @@ version stays `0.x`; `1.0.0` is the day the business runs on the app.
 
 - Versions are pinned exactly in `package.json` (no `^`) for the framework pieces, so a fresh install builds the same app.
 - Upgrade on purpose, one area per PR (`chore(deps): …`), reading the release notes (caching and breaking changes), then the full check including e2e.
+- The README's version badges are typed by hand: update them with the upgrade (a test fails until they match `package.json`).
 - `pnpm-lock.yaml` is committed; CI installs with `--frozen-lockfile`.
