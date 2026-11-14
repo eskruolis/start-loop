@@ -26,7 +26,7 @@ No coding needed to start. Describe what you need in plain words; Claude builds 
 </p>
 
 <p align="center">
-<img alt="Node.js >%3D22.12" src="https://img.shields.io/badge/Node.js-%3E%3D22.12-5FA04E?logo=nodedotjs&logoColor=white">
+<img alt="Node.js 22.12 or newer" src="https://img.shields.io/badge/Node.js-%3E%3D22.12-5FA04E?logo=nodedotjs&logoColor=white">
 <img alt="pnpm 10.33.4" src="https://img.shields.io/badge/pnpm-10.33.4-F69220?logo=pnpm&logoColor=white">
 <img alt="Vitest 5.1.0" src="https://img.shields.io/badge/Vitest-5.1.0-6E9F18?logo=vitest&logoColor=white">
 <img alt="Playwright 1.65.0" src="https://img.shields.io/badge/Playwright-1.65.0-2EAD33">
