@@ -6,6 +6,7 @@ No coding needed to start. Describe what you need in plain words; Claude builds 
 <p align="center">
 <img alt="agentic first" src="https://img.shields.io/badge/agentic-first-D97757?logo=claude&logoColor=white">
 <img alt="Claude Code ready" src="https://img.shields.io/badge/Claude_Code-ready-D97757?logo=claude&logoColor=white">
+<img alt="one language: TypeScript front to back" src="https://img.shields.io/badge/one_language-TypeScript_front_to_back-3178C6?logo=typescript&logoColor=white">
 <img alt="AGENTS.md rulebook" src="https://img.shields.io/badge/AGENTS.md-rulebook-555555">
 <img alt="skills 7" src="https://img.shields.io/badge/skills-7-555555">
 <img alt="lessons 60" src="https://img.shields.io/badge/lessons-60-555555">
@@ -47,6 +48,7 @@ spreadsheet. It starts with a dashboard and an example **Sales** module that sho
 keep it, change it, or ask Claude to remove it and build your first module instead.
 
 - **Agentic-first:** the repo is set up for an AI agent to do the building. The rules, patterns and lessons from three production projects are written for it (`AGENTS.md`, `docs/`), it has ready-made skills for the common jobs, and every change it makes is checked by types, tests and a real browser before it reaches you.
+- **One language, front to back:** the whole app is TypeScript (JavaScript with types): the screens, the server code, the database and Sheets access, the tests and the scripts. There is no separate backend in another language and no API layer to keep in step: a form, the server action it calls and the table it writes share the same types and the same validation, so a change on one side that breaks the other fails the typecheck before it runs. One language, one toolchain and one set of rules is also less for you to learn and less for Claude to get wrong.
 - **Works with your Google Sheets from day one**, and moves to a real database module by module when you are ready. Each module can live in Postgres, Google Sheets, or both side by side.
 - **Built like a professional app:** sign-in with roles, validation on screen and on the server, money handled in cents, tests that click through the app on a phone and a desktop, light and dark themes.
 
